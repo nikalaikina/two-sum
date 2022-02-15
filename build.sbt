@@ -8,6 +8,7 @@ lazy val root = (project in file("."))
     libraryDependencies ++= Seq(
       "org.typelevel" %% "cats-effect" % "3.3.5",
       "org.http4s" %% "http4s-dsl" % "1.0.0-M31",
+      "org.http4s" %% "http4s-circe" % "1.0.0-M31",
       "org.http4s" %% "http4s-blaze-client" % "1.0.0-M31",
       "org.http4s" %% "http4s-blaze-server" % "1.0.0-M31",
     )
