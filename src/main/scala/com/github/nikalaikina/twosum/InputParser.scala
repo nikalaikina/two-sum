@@ -41,7 +41,7 @@ object InputParser extends App {
   }
 
   private def parseNumber(string: String): Either[ParsingError, Int] = {
-    string.trim.toIntOption.toRight(NotANumber(string))
+    string.trim.toIntOption.toRight(NotANumber(string.trim))
   }
 
   sealed trait ParsingError
