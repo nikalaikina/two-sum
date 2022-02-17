@@ -10,21 +10,21 @@ object InputParser extends App {
 
   def parse(string: String): Either[ParsingError, List[Row]] = {
     for {
-      rows <- parseArray(string)
+      rows <- parseArray(string.replace(" ", ""))
       lists = rows.map(_.split(",").toList)
       numbers <- lists.traverse(_.traverse(parseNumber))
     } yield numbers
   }
 
   private def parseArray(string: String): Either[ParsingError, List[String]] = {
-    string.trim match {
-      case s"[[$str]]" => str.split("\\]\\s*,\\s*\\[").toList.asRight
+    string match {
+      case s"[[$str]]" => str.split("\\],\\[").toList.asRight
       case _ => IncorrectShape.asLeft
     }
   }
 
   private def parseNumber(string: String): Either[ParsingError, Int] = {
-    string.trim.toIntOption.toRight(NotANumber(string.trim))
+    string.toIntOption.toRight(NotANumber(string))
   }
 
   sealed trait ParsingError
