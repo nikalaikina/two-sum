@@ -6,7 +6,7 @@ import cats.syntax.traverse._
 import com.github.nikalaikina.twosum.InputParser.ParsingError.{IncorrectShape, NotANumber}
 import com.github.nikalaikina.twosum.TwoSumSolver.Row
 
-object InputParser extends App {
+object InputParser {
 
   def parse(string: String): Either[ParsingError, List[Row]] = {
     for {
