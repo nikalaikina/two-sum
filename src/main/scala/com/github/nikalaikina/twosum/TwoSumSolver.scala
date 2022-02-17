@@ -8,8 +8,6 @@ object TwoSumSolver {
     data.map(findSums(sum, _).toList)
   }
 
-  // If performance is critical can be done in one go
-  // but i like it this way because it is readable and complexity is the same
   def findSums(sum: Int, data: List[Int]): Set[List[Int]] = {
     val contains = data.toSet
     contains.collect { case x if contains(sum - x) => List(x, sum - x).sorted }

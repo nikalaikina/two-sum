@@ -1,6 +1,6 @@
 package com.github.nikalaikina.twosum
 
-import com.github.nikalaikina.twosum.InputParser.ParsingError.{NotANumber, NotAnArray}
+import com.github.nikalaikina.twosum.InputParser.ParsingError.{NotANumber, IncorrectShape}
 import com.github.nikalaikina.twosum.InputParser.parse
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should
@@ -13,11 +13,11 @@ class InputParserTest extends AnyFlatSpec with should.Matchers {
   }
 
   it should "give not an array" in {
-    parse("11, -4], [2]]") shouldBe Left(NotAnArray("11, -4], [2]]"))
+    parse("11, -4], [2]]") shouldBe Left(IncorrectShape)
   }
 
   it should "give not an array for inner array" in {
-    parse("[[11, -4], 2]") shouldBe Left(NotAnArray("2"))
+    parse("[[11, -4], 2]") shouldBe Left(IncorrectShape)
   }
 
   it should "give not a number" in {
